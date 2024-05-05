@@ -1,5 +1,6 @@
 from bink.story import Story, story_from_file
 import unittest
+from random import randrange
 
 
 class StoryTestCase(unittest.TestCase):
@@ -9,7 +10,7 @@ class StoryTestCase(unittest.TestCase):
         self.assertEqual(story.cont(), "Line.\n")
 
     def test_the_intercept(self):
-        story = story_from_file("inkfiles/TheIntercept.ink.json")
+        story = story_from_file("/Users/vdobranov/Yandex.Disk.localized/Python/Flet/ink/Aralkum.ink.json")
         self.assertTrue(story.can_continue())
 
         end = False
@@ -26,8 +27,8 @@ class StoryTestCase(unittest.TestCase):
                 for i, text in enumerate(choices):
                     print(f"{i + 1}. {text}")
                     
-                # Always choose the first option
-                story.choose_choice_index(0)
+                # Choose random option
+                story.choose_choice_index(randrange(len(choices)))
             else:
                 end = True
 
